@@ -1,17 +1,10 @@
-import click
+from flask import Flask
 
+app = Flask(__name__)
 
-@click.group()
-def main():
-    pass
-
-
-@main.command()
-@click.option("--a", prompt="Hi friend. What's your name? ", type=str)
-def say_hi(a):
-    value = a
-    click.echo(" Nice to meet you, {}".format(value))
-
+@app.route("/")
+def home():
+    return "Home"
 
 if __name__ == "__main__":
-    main()
+    app.run(host='0.0.0.0', port=5000)
