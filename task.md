@@ -16,6 +16,10 @@ Minimum requirements:
 `docker compose up`
 `Once mysql is up and running import db_init.sql into mysql`
 `127.0.0.1:5000` - should show "Hello, Rumen"
+
 - Configure an automated build and push process for the Docker image using a CI tool (e.g., GitLab CI/CD, GitHub Actions, TravisCI).
+`git tag -v1.0.1`
+`git push origin v.1.0.1` pushing a tag will start the automatic image build and push
+
 - Deploy your application into a local Kubernetes environment (like kind or minikube), using Helm charts for deployment structuring and management.
 - Deploy and manage an SQL database within the Kubernetes cluster using Helm, ensuring that the application can successfully interact with it.
