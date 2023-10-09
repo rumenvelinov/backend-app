@@ -6,7 +6,6 @@ WORKDIR /usr/src/app
 
 COPY requirements.txt ./
 
-RUN apt-get update && apt-get install -y mariadb-client
 RUN pip install --no-cache-dir -r requirements.txt
 
 ADD hello.py ./
