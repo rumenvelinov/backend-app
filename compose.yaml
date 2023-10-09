@@ -1,0 +1,40 @@
+services:
+  backend:
+    build: .
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    environment:
+      - FLASK_MYSQL_DATABASE_DB=backend
+      - FLASK_MYSQL_DATABASE_HOST=db
+      - FLASK_MYSQL_DATABASE_USER=backend
+      - FLASK_MYSQL_DATABASE_PASSWORD=${MYSQL_DATABASE_PASSWORD}
+    secrets:
+      - db_password
+
+  db:
+    image: "mysql:8.1.0"
+    #command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:
+      - type: volume
+        source: mysql
+        target: /var/lib/mysql
+    environment:
+      MYSQL_DATABASE: backend
+      MYSQL_USER: backend
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
+      MYSQL_PASSWORD_FILE: /run/secrets/db_password
+    secrets:
+      - db_root_password
+      - db_password
+
+secrets:
+  db_password:
+    file: db_password.txt
+  db_root_password:
+    file: db_root_password.txt
+
+volumes:
+  mysql:
