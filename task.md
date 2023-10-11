@@ -14,7 +14,9 @@ Minimum requirements:
 `echo "yourpass" > db_password.txt`
 `echo "yourrootpass" > db_root_password.txt`
 `docker compose up`
-`Once mysql is up and running import db_init.sql into mysql`
+Once mysql is up and running login to the container:
+`docker exec -it backend-app-db-1 /bin/bash`
+and import db_init.sql into mysql
 `127.0.0.1:5000` - should show "Hello, Rumen"
 
 - Configure an automated build and push process for the Docker image using a CI tool (e.g., GitLab CI/CD, GitHub Actions, TravisCI).
@@ -22,4 +24,8 @@ Minimum requirements:
 `git push origin v.1.0.1` pushing a tag will start the automatic image build and push
 
 - Deploy your application into a local Kubernetes environment (like kind or minikube), using Helm charts for deployment structuring and management.
+
+
 - Deploy and manage an SQL database within the Kubernetes cluster using Helm, ensuring that the application can successfully interact with it.
+`helm repo add bitnami https://charts.bitnami.com/bitnami`
+`helm install --values ./helm/backend-db-custom-values.yaml db bitnami/mysql`
