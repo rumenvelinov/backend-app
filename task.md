@@ -1,5 +1,4 @@
-The goal is to develop a streamlined CI/CD process for a backend application, incorporating an
-SQL database connection.
+The goal is to develop a streamlined CI/CD process for a backend application, incorporating an SQL database connection.
 Optionally, ensuring exposure through Kong Ingress Controller will accrue bonus points.
 
 Minimum requirements:
@@ -24,7 +23,7 @@ and import db_init.sql into mysql
 `git push origin v.1.0.1` pushing a tag will start the automatic image build and push
 
 - Deploy your application into a local Kubernetes environment (like kind or minikube), using Helm charts for deployment structuring and management.
-
+`helm install --set dbConfig.password=test,dbConfig.user=backend backend ./backend`
 
 - Deploy and manage an SQL database within the Kubernetes cluster using Helm, ensuring that the application can successfully interact with it.
 `helm repo add bitnami https://charts.bitnami.com/bitnami`
