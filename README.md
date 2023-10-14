@@ -23,6 +23,7 @@ and import db_init.sql into mysql
 `git push origin v.1.0.1` pushing a tag will start the automatic image build and push
 
 - Deploy your application into a local Kubernetes environment (like kind or minikube), using Helm charts for deployment structuring and management.
+`Using Minikube v1.31.2`
 `helm install --set dbConfig.password=test,dbConfig.user=backend backend ./backend`
 
 - Deploy and manage an SQL database within the Kubernetes cluster using Helm, ensuring that the application can successfully interact with it.
